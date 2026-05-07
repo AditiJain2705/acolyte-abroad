@@ -215,7 +215,6 @@ const Footer = () => {
                                 ))}
                             </div>
 
-                            {/* Social Media */}
                             <div>
                                 <h4 className="font-semibold text-white mb-4 flex items-center gap-2 font-['Red_Hat_Mono']">
                                     <Globe className="w-4 h-4 text-[#0B52BF]" />
