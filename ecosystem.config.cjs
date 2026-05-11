@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "acolyte-living-abroad",
       script: "npm",
-      args: "start -- --port 3033",
+      args: "start -- --port 3036",
     },
   ],
 };
