@@ -1,8 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import ResumeLeadPopup from "./Resumeleadpopup";
 
 export default function HeroSection() {
+    const [popupOpen, setPopupOpen] = useState(false);
+
     return (
         <section className="relative min-h-screen bg-[#F0F4FF] overflow-hidden flex items-center">
             {/* Background subtle radial */}
@@ -85,20 +89,20 @@ export default function HeroSection() {
                         </p>
                     </div>
 
-                    {/* Envelope CTA block with float animation */}
-                    <div className="relative ml-44 flex flex-col  items-start animate-float-slow">
+                    {/* Envelope CTA block — now a button that opens the popup */}
+                    <button
+                        onClick={() => setPopupOpen(true)}
+                        className="relative ml-44 flex flex-col items-start animate-float-slow bg-transparent border-none p-0 cursor-pointer text-left"
+                        aria-label="Upload your resume"
+                    >
                         {/* Handwritten label */}
-                        <div className="flex items-center gap-1  ml-4 ">
-                            <span
-                                className="text-[#0052FF] text-base lg:text-4xl    heading-special"
-                            >
+                        <div className="flex items-center gap-1 ml-4">
+                            <span className="text-[#0052FF] text-base lg:text-4xl heading-special">
                                 Upload your
                             </span>
                         </div>
                         <div className="flex items-center gap-1 mb-1 ml-4">
-                            <span
-                                className="text-[#0052FF] text-base lg:text-4xl    heading-special"
-                            >
+                            <span className="text-[#0052FF] text-base lg:text-4xl heading-special">
                                 Resume once
                             </span>
                         </div>
@@ -136,8 +140,8 @@ export default function HeroSection() {
                                 className="object-contain drop-shadow-xl"
                             />
 
-                            {/* CLICK HERE button */}
-                            <button className="absolute -right-32 bottom-4 flex items-center gap-2 bg-[#E01E5A] hover:bg-[#c41a4f] active:scale-95 transition-all duration-150 text-white font-extrabold text-sm tracking-wider rounded-full px-4 py-2.5 shadow-lg cursor-pointer">
+                            {/* CLICK HERE badge */}
+                            <div className="absolute -right-32 bottom-4 flex items-center gap-2 bg-[#E01E5A] text-white font-extrabold text-sm tracking-wider rounded-full px-4 py-2.5 shadow-lg">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="22"
@@ -166,75 +170,65 @@ export default function HeroSection() {
                                     </defs>
                                 </svg>
                                 CLICK HERE
-                            </button>
+                            </div>
                         </div>
-                    </div>
+                    </button>
                 </div>
             </div>
-            <div className="relative w-full max-w-7xl mx-auto  flex flex-row items-center justify-between md:gap-8 block md:hidden">
 
-                {/* LEFT — Character image with float animation */}
-                <div className="relative -left-32 bottom-16 flex-shrink-0 h-[50vh] w-[560px] z-0 ">
+            {/* ── MOBILE LAYOUT ── */}
+            <div className="relative w-full max-w-7xl mx-auto flex flex-row items-center justify-between md:gap-8 block md:hidden">
 
-
+                {/* Character image */}
+                <div className="relative -left-32 bottom-16 flex-shrink-0 h-[50vh] w-[560px] z-0">
                     <Image
                         src="/images/man.webp"
                         alt="Student with headphones"
                         width={960}
                         height={480}
-                        className=" drop-shadow-2xl block lg:hidden"
+                        className="drop-shadow-2xl block lg:hidden"
                         priority
                     />
-
-
-                    {/* Stats card below image */}
-
                 </div>
 
-                <div className="  absolute left-[45%] bottom-24">
+                <div className="absolute left-[45%] bottom-24">
                     {/* Headline */}
-                    <div className="leading-none    ">
-                        {/* "Study, Work," pill */}
+                    <div className="leading-none">
                         <div className="inline-flex items-center gap-2 bg-[#0052FF] text-white text-2xl md:text-5xl lg:text-7xl md:font-black rounded-2xl px-5 py-1 md:py-2 mb-3 relative">
-                            {/* asterisk decoration */}
                             <span className="absolute -top-3 -left-3 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg md:font-black shadow">
                                 ✳
                             </span>
                             Study, Work,
                         </div>
 
-                        {/* "and live abroad" line */}
-                        <div className="flex flex-wrap items-baseline gap-2  md:gap-3 text-2xl md:text-5xl lg:text-7xl md:font-black text-gray-900 ">
+                        <div className="flex flex-wrap items-baseline gap-2 md:gap-3 text-2xl md:text-5xl lg:text-7xl md:font-black text-gray-900">
                             <span>and</span>
                             <span className="bg-[#0052FF] text-white rounded-2xl px-2 md:px-4 py-1">
                                 live abroad
                             </span>
                         </div>
 
-                        {/* "made simple." */}
                         <p className="text-2xl md:text-5xl lg:text-7xl font-black text-gray-900 mt-2">
                             made simple.
                         </p>
                     </div>
 
-                    {/* Envelope CTA block with float animation */}
-                    <div className="relative ml-14  flex flex-col  items-start animate-float-slow">
-                        {/* Handwritten label */}
-                        <div className="flex items-center gap-1  ml-4 ">
-                            <span
-                                className="text-[#0052FF] text-base lg:text-4xl    heading-special"
-                            >
+                    {/* Envelope CTA — mobile, also a button */}
+                    <button
+                        onClick={() => setPopupOpen(true)}
+                        className="relative ml-14 flex flex-col items-start animate-float-slow bg-transparent border-none p-0 cursor-pointer text-left"
+                        aria-label="Upload your resume"
+                    >
+                        <div className="flex items-center gap-1 ml-4">
+                            <span className="text-[#0052FF] text-base lg:text-4xl heading-special">
                                 Upload your
                             </span>
                         </div>
                         <div className="flex items-center gap-1 mb-1 ml-4">
-                            <span
-                                className="text-[#0052FF] text-base lg:text-4xl    heading-special"
-                            >
+                            <span className="text-[#0052FF] text-base lg:text-4xl heading-special">
                                 Resume once
                             </span>
                         </div>
-                        {/* Curved arrow SVG */}
                         <svg
                             className="ml-10 mb-1"
                             width="40"
@@ -258,7 +252,6 @@ export default function HeroSection() {
                             />
                         </svg>
 
-                        {/* Envelope + button */}
                         <div className="relative">
                             <Image
                                 src="/images/envelop.webp"
@@ -268,8 +261,8 @@ export default function HeroSection() {
                                 className="object-contain drop-shadow-xl h-32 md:h-52"
                             />
 
-                            {/* CLICK HERE button */}
-                            <button className="absolute -right-32 bottom-4 hidden md:flex items-center gap-2 bg-[#E01E5A] hover:bg-[#c41a4f] active:scale-95 transition-all duration-150 text-white font-extrabold text-sm tracking-wider rounded-full px-4 py-2.5 shadow-lg cursor-pointer">
+                            {/* CLICK HERE badge — visible on mobile too */}
+                            <div className="absolute -right-32 bottom-4 flex items-center gap-2 bg-[#E01E5A] text-white font-extrabold text-sm tracking-wider rounded-full px-4 py-2.5 shadow-lg">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="22"
@@ -298,10 +291,12 @@ export default function HeroSection() {
                                     </defs>
                                 </svg>
                                 CLICK HERE
-                            </button>
+                            </div>
                         </div>
-                    </div>
+                    </button>
                 </div>
+
+                {/* Stats card */}
                 <div className="mt-6 bg-white/80 backdrop-blur-md rounded-2xl px-5 py-4 shadow-lg border border-white z-10">
                     <p className="text-sm text-[#0052FF]/60 font-medium mb-3 tracking-wide">
                         The largest network of opportunities globally.
@@ -326,12 +321,12 @@ export default function HeroSection() {
                         ))}
                     </div>
                 </div>
-                {/* RIGHT — Headline + CTA */}
-
             </div>
-            {/* Tailwind keyframes injected via style tag */}
+
+            {/* ── POPUP ── */}
+            <ResumeLeadPopup isOpen={popupOpen} onClose={() => setPopupOpen(false)} />
+
             <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap');
 
         @keyframes float {
           0%, 100% { transform: translateY(0px); }

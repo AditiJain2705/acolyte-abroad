@@ -1,10 +1,13 @@
 "use client";
+import React from 'react'
 
 import Image from "next/image";
 import Link from "next/link";
 import { FiSearch, FiArrowUpRight } from "react-icons/fi";
+import ResumeLeadPopup from "./Resumeleadpopup";
 
 export default function Navbar() {
+    const [popupOpen, setPopupOpen] = React.useState(false);
     return (
         <header className="w-full border-t-4 border-blue-500 bg-[#f5f5f5]">
             <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 lg:px-8">
@@ -17,7 +20,7 @@ export default function Navbar() {
                         <Image src={"/images/abroad-living.webp"} alt="Acolyte Abroad" height={60} className="w-24 h-auto object-contain lg:w-[110px]" width={120} />
                     </Link>
                     {/* Search Bar */}
-                    <div className="hidden md:flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 shadow-sm">
+                    {/* <div className="hidden md:flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 shadow-sm">
                         <FiSearch className="mr-2 text-gray-400" />
 
                         <input
@@ -25,50 +28,44 @@ export default function Navbar() {
                             placeholder="Search paths..."
                             className="w-[220px] bg-transparent text-sm text-gray-700 outline-none placeholder:text-gray-400"
                         />
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Center Nav */}
                 <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
-                    <Link href="/" className="transition hover:text-black">
-                        Jobs Abroad
+                    <Link href="#process" className="transition hover:text-black">
+                        Process
                     </Link>
 
-                    <Link href="/" className="transition hover:text-black">
-                        Jobs
+                    <Link href="#featured-works" className="transition hover:text-black">
+                        Featured Works
                     </Link>
 
-                    <Link href="/" className="transition hover:text-black">
-                        Accommodation
+                    <Link href="#ecosystem" className="transition hover:text-black">
+                        Ecosystem
                     </Link>
 
-                    <Link href="/" className="transition hover:text-black">
-                        Destinations
-                    </Link>
+
                 </nav>
 
                 {/* Right Button */}
-                <Link
-                    href="/"
+                <button
+                    onClick={() => setPopupOpen(true)}
                     className="flex items-center gap-2 rounded-full bg-[#eef2ff] px-5 py-2.5 text-sm font-semibold text-[#1d4ed8] transition hover:bg-[#dbe4ff]"
                 >
                     Get Started
                     <FiArrowUpRight className="text-base" />
-                </Link>
+                </button>
             </div>
 
             {/* Mobile Search */}
-            <div className="px-4 pb-4 md:hidden">
-                <div className="flex items-center rounded-full border border-gray-300 bg-white px-4 py-2 shadow-sm">
-                    <FiSearch className="mr-2 text-gray-400" />
 
-                    <input
-                        type="text"
-                        placeholder="Search paths..."
-                        className="w-full bg-transparent text-sm text-gray-700 outline-none placeholder:text-gray-400"
-                    />
-                </div>
-            </div>
+
+            {popupOpen && <ResumeLeadPopup
+                isOpen={popupOpen}          // boolean — controlled by parent useState
+                onClose={() => setPopupOpen(false)}  // called on backdrop click or X
+                source="homepage_cta"       // optional CRM source tag
+            />}
         </header>
     );
 }

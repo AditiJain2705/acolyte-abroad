@@ -12,10 +12,17 @@ const page = () => {
     <>
       <Navbar />
       <HeroSection />
-      <ProcessSection />
+      <div id="process">
+        <ProcessSection />
+      </div>
+      <div id="featured-works">
+        <FeaturedWorks />
+      </div>
       <MakeWorkEasy />
       <FeaturedWorks />
-      <EcosystemSection />
+      <div id="ecosystem">
+        <EcosystemSection />
+      </div>
       <Footer />
     </>
   );
